@@ -5,119 +5,210 @@
 //  Created by Maryam Ahmad on 02/11/2026.
 //
 
-
-
 import SwiftUI
 
-// MARK: - CONTENT
-
-// 🟤 1 - ONBOARDING SLIDE START
-struct OnboardingSlide: Identifiable, Hashable {
-    let id: Int
-    let image: String
-    let title: String
-    let text: String
-}
-// 🟤 1 - ONBOARDING SLIDE END
-
-
-// MARK: - PAWSPHERE DATA
-
-// 🟤 2 - PAWSPHERE START
-enum PawSphere {
-
-    static let slides: [OnboardingSlide] = [
-
-    ]
-
-}
-// 🟤 2 - PAWSPHERE END
-
-
-// MARK: - ONBOARDING VIEW
-
-// 🟤 3 - ONBOARDING VIEW START
 struct OnboardingView: View {
 
-    @State private var index = 0
+    @State private var page = 0
 
-    // 🟤 4 - BODY START
+    let images = ["on1", "on2", "on3"]
+
+    let titles = [
+        "PawSphere",
+        "Care, Connect, Find All in One Place",
+        "Better Care, Happier Pets"
+    ]
+
+    let green = Color(red: 0.10, green: 0.35, blue: 0.27)
+    let cream = Color(red: 1.0, green: 0.98, blue: 0.95)
+
     var body: some View {
 
-        // 🟣 5 - ZSTACK START
-        ZStack {
+        GeometryReader { geo in
 
-            // 🔵 6 - VSTACK START
-            VStack(spacing: 0) {
+            ZStack {
+                cream.ignoresSafeArea()
 
-                // 🟡 7 - TABVIEW START
-                TabView(selection: $index) {
+                VStack(spacing: 0) {
 
-                    // 🟡 8 - FOREACH START
-                    ForEach(PawSphere.slides) { slide in
+                    if page == 0 {
 
-                        SlidePage(slide: slide)
-                            .tag(slide.id)
+                        HStack {
+                            Button("Skip") {
+                                page = 2
+                            }
 
+                            Spacer()
+
+                            HStack(spacing: 5) {
+                                Circle()
+                                    .fill(green)
+                                    .frame(width: 8, height: 8)
+
+                                Circle()
+                                    .stroke(green, lineWidth: 1)
+                                    .frame(width: 8, height: 8)
+
+                                Circle()
+                                    .stroke(green, lineWidth: 1)
+                                    .frame(width: 8, height: 8)
+                            }
+
+                            Spacer()
+
+                            Button {
+                                page += 1
+                            } label: {
+                                Image(systemName: "arrow.right.circle")
+                                    .font(.system(size: 27))
+                            }
+                        }
+                        .foregroundColor(green)
+                        .padding(.horizontal, 25)
+                        .padding(.top, 15)
+
+                        Image("paw1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 150, height: 150)
+                            .padding(.top, 15)
+
+                        Text("PawSphere")
+                            .font(.system(
+                                size: 38,
+                                weight: .bold,
+                                design: .serif
+                            ))
+                            .foregroundColor(green)
+
+                        Spacer()
+
+                        Text("All for a Happier Pet Life")
+                            .font(.system(size: 18))
+                            .foregroundColor(green)
+
+                        Spacer()
+
+                        
+                        Image("on1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(
+                                width: geo.size.width,
+                                height: geo.size.height * 0.42,
+                                alignment: .bottom
+                            )
+                            .offset(y: geo.safeAreaInsets.bottom)
+
+
+                    } else {
+
+                        Image(images[page])
+                            .resizable()
+                            .scaledToFit()
+                            .frame(
+                                width: geo.size.width,
+                                height: geo.size.height * 0.43
+                            )
+                            .padding(.top, 20)
+
+                        Text(titles[page])
+                            .font(.system(
+                                size: 28,
+                                weight: .regular,
+                                design: .serif
+                            ))
+                            .foregroundColor(green)
+                            .multilineTextAlignment(.leading)
+                            .frame(
+                                maxWidth: .infinity,
+                                alignment: .leading
+                            )
+                            .padding(.horizontal, 24)
+                            .padding(.top, 12)
+
+                        Spacer()
+
+                        HStack(spacing: 7) {
+                            ForEach(0..<3, id: \.self) { number in
+                                Circle()
+                                    .fill(
+                                        page == number
+                                        ? green
+                                        : green.opacity(0.25)
+                                    )
+                                    .frame(width: 8, height: 8)
+                            }
+                        }
+
+                        if page == 2 {
+
+                            Button {
+                            } label: {
+                                HStack {
+                                    Text("Get Started")
+                                    Image(systemName: "arrow.right")
+                                }
+                                .font(.system(
+                                    size: 18,
+                                    design: .serif
+                                ))
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 25)
+                                .frame(height: 42)
+                                .background(green)
+                                .cornerRadius(25)
+                            }
+                            .padding(.top, 18)
+
+                        } else {
+
+                            HStack {
+                                Button("Skip") {
+                                    page = 2
+                                }
+
+                                Spacer()
+
+                                Button {
+                                    page += 1
+                                } label: {
+                                    Image(systemName: "arrow.right.circle")
+                                        .font(.system(size: 27))
+                                }
+                            }
+                            .foregroundColor(green)
+                            .padding(.horizontal, 25)
+                            .padding(.top, 35)
+
+                        }
+
+                        Button("Back") {
+                            if page > 0 {
+                                page -= 1
+                            }
+                        }
+                        .font(.system(
+                            size: 17,
+                            design: .serif
+                        ))
+                        .foregroundColor(green)
+                        .underline()
+                        .padding(.top, 12)
+
+                        Spacer()
+                            .frame(height: 25)
                     }
-                    // 🟡 8 - FOREACH END
-
                 }
-                // 🟡 7 - TABVIEW END
-                .tabViewStyle(.page(indexDisplayMode: .never))
-
+                .frame(
+                    width: geo.size.width,
+                    height: geo.size.height
+                )
             }
-            // 🔵 6 - VSTACK END
-
         }
-        // 🟣 5 - ZSTACK END
-
     }
-    // 🟤 4 - BODY END
-
 }
-// 🟤 3 - ONBOARDING VIEW END
 
-
-// MARK: - SLIDE PAGE
-
-// 🟤 9 - SLIDE PAGE START
-struct SlidePage: View {
-
-    let slide: OnboardingSlide
-
-    // 🟤 10 - BODY START
-    var body: some View {
-
-        // 🔵 11 - VSTACK START
-        VStack {
-
-            Image(slide.image)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300, height: 300)
-
-            Text(slide.title)
-
-            Text(slide.text)
-
-        }
-        // 🔵 11 - VSTACK END
-
-    }
-    // 🟤 10 - BODY END
-
-}
-// 🟤 9 - SLIDE PAGE END
-
-
-// MARK: - PREVIEW
-
-// 🟣 12 - PREVIEW START
 #Preview {
-
     OnboardingView()
-
 }
-// 🟣 12 - PREVIEW END
-

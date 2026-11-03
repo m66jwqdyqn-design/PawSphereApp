@@ -11,7 +11,7 @@ import SwiftUI
 struct PawSphereAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OnboardingView()
         }
     }
 }
