@@ -21,6 +21,7 @@ struct OnboardingView: View {
 
     let green = Color(red: 0.10, green: 0.35, blue: 0.27)
     let cream = Color(red: 1.0, green: 0.98, blue: 0.95)
+   
 
     var body: some View {
 
