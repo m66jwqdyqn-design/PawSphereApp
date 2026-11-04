@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @State private var goToWelcome = false
 
     @State private var page = 0
 
@@ -24,39 +25,40 @@ struct OnboardingView: View {
    
 
     var body: some View {
-
+        
+        NavigationStack{
         GeometryReader { geo in
-
+            
             ZStack {
                 cream.ignoresSafeArea()
-
+                
                 VStack(spacing: 0) {
-
+                    
                     if page == 0 {
-
+                        
                         HStack {
                             Button("Skip") {
                                 page = 2
                             }
-
+                            
                             Spacer()
-
+                            
                             HStack(spacing: 5) {
                                 Circle()
                                     .fill(green)
                                     .frame(width: 8, height: 8)
-
+                                
                                 Circle()
                                     .stroke(green, lineWidth: 1)
                                     .frame(width: 8, height: 8)
-
+                                
                                 Circle()
                                     .stroke(green, lineWidth: 1)
                                     .frame(width: 8, height: 8)
                             }
-
+                            
                             Spacer()
-
+                            
                             Button {
                                 page += 1
                             } label: {
@@ -67,13 +69,13 @@ struct OnboardingView: View {
                         .foregroundColor(green)
                         .padding(.horizontal, 25)
                         .padding(.top, 15)
-
+                        
                         Image("paw1")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150, height: 150)
                             .padding(.top, 15)
-
+                        
                         Text("PawSphere")
                             .font(.system(
                                 size: 38,
@@ -81,15 +83,15 @@ struct OnboardingView: View {
                                 design: .serif
                             ))
                             .foregroundColor(green)
-
+                        
                         Spacer()
-
+                        
                         Text("All for a Happier Pet Life")
                             .font(.system(size: 18))
                             .foregroundColor(green)
-
+                        
                         Spacer()
-
+                        
                         
                         Image("on1")
                             .resizable()
@@ -100,10 +102,10 @@ struct OnboardingView: View {
                                 alignment: .bottom
                             )
                             .offset(y: geo.safeAreaInsets.bottom)
-
-
+                        
+                        
                     } else {
-
+                        
                         Image(images[page])
                             .resizable()
                             .scaledToFit()
@@ -112,7 +114,7 @@ struct OnboardingView: View {
                                 height: geo.size.height * 0.43
                             )
                             .padding(.top, 20)
-
+                        
                         Text(titles[page])
                             .font(.system(
                                 size: 28,
@@ -127,9 +129,9 @@ struct OnboardingView: View {
                             )
                             .padding(.horizontal, 24)
                             .padding(.top, 12)
-
+                        
                         Spacer()
-
+                        
                         HStack(spacing: 7) {
                             ForEach(0..<3, id: \.self) { number in
                                 Circle()
@@ -141,9 +143,9 @@ struct OnboardingView: View {
                                     .frame(width: 8, height: 8)
                             }
                         }
-
+                        
                         if page == 2 {
-
+                            
                             Button {
                             } label: {
                                 HStack {
@@ -161,16 +163,16 @@ struct OnboardingView: View {
                                 .cornerRadius(25)
                             }
                             .padding(.top, 18)
-
+                            
                         } else {
-
+                            
                             HStack {
                                 Button("Skip") {
                                     page = 2
                                 }
-
+                                
                                 Spacer()
-
+                                
                                 Button {
                                     page += 1
                                 } label: {
@@ -181,9 +183,9 @@ struct OnboardingView: View {
                             .foregroundColor(green)
                             .padding(.horizontal, 25)
                             .padding(.top, 35)
-
+                            
                         }
-
+                        
                         Button("Back") {
                             if page > 0 {
                                 page -= 1
@@ -196,7 +198,7 @@ struct OnboardingView: View {
                         .foregroundColor(green)
                         .underline()
                         .padding(.top, 12)
-
+                        
                         Spacer()
                             .frame(height: 25)
                     }
@@ -207,6 +209,10 @@ struct OnboardingView: View {
                 )
             }
         }
+        .navigationDestination(isPresented: $goToWelcome){
+            WelcomeView()
+        }
+    }
     }
 }
 
