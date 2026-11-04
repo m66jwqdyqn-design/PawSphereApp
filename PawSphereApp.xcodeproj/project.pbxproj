@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		2578DC413081241900CD29B1 /* PawSphereApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawSphereApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2549B461309B1CF60040E3D3 /* PawSphereApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawSphereApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -46,16 +46,8 @@
 			isa = PBXGroup;
 			children = (
 				2578DC433081241900CD29B1 /* PawSphereApp */,
-				2578DC423081241900CD29B1 /* Products */,
+				2549B461309B1CF60040E3D3 /* PawSphereApp.app */,
 			);
-			sourceTree = "<group>";
-		};
-		2578DC423081241900CD29B1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2578DC413081241900CD29B1 /* PawSphereApp.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,7 +72,7 @@
 			packageProductDependencies = (
 			);
 			productName = PawSphereApp;
-			productReference = 2578DC413081241900CD29B1 /* PawSphereApp.app */;
+			productReference = 2549B461309B1CF60040E3D3 /* PawSphereApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +100,7 @@
 			mainGroup = 2578DC383081241900CD29B1;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 2578DC423081241900CD29B1 /* Products */;
+			productRefGroup = 2578DC383081241900CD29B1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
