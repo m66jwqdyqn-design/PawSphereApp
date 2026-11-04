@@ -16,7 +16,7 @@ struct WelcomeView: View {
                         weight: .bold,
                         design: .serif
                     ))
-                    .foregroundColor(Color(red: 32/255, green: 92/255, blue: 73/255))}
+    }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("backgroundColor").ignoresSafeArea())
