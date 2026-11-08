@@ -61,9 +61,10 @@ struct WelcomeView: View {
                     .foregroundColor(green)
                     .frame(maxWidth: .infinity)
                     .frame(height: 45)
-                    .clipShape(Capsule()
-                        .stroke(style: green, lineWidth: 1)
-            
+                    .overlay{
+                        Capsule()
+                            .stroke(green, lineWidth: 1)
+                    }
             }
             
                 
