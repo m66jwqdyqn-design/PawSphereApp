@@ -9,8 +9,7 @@ import SwiftUI
 struct WelcomeView: View {
     let green = Color(red: 0.10, green: 0.35, blue: 0.27)
     var body: some View {
-        NavigationStack{
-        VStack(spacing: 0){
+        VStack(spacing: 0) {
             Text("PawSphere")
                 .font(.system(
                     size: 30,
@@ -19,6 +18,7 @@ struct WelcomeView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 35)
         Spacer()
+                .frame(height: 65)
             
             
             ZStack{
@@ -44,16 +44,18 @@ struct WelcomeView: View {
                 .padding(.top, 5)
             Spacer()
                 .frame(height: 45)
-            NavigationLink{
-               RegisterTabView(selectedTab: 1)
-            }label: {
-                Text("create an account")
+           
+            NavigationLink {
+                RegisterTabView(selectedTab: 1)
+            } label: {
+                Text("Create an Account")
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 45)
+                    .background(green)
                     .clipShape(Capsule())
-            
             }
+
             NavigationLink{
                RegisterTabView(selectedTab: 0)
             }label: {
@@ -66,17 +68,20 @@ struct WelcomeView: View {
                             .stroke(green, lineWidth: 1)
                     }
             }
-            
-                
-            
-        }
-    }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.top, 12)
+           
+            Spacer()
+
+            }
+            .padding(.horizontal, 25) // أضيفي هذا السطر
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("backgroundColor")
             .ignoresSafeArea())
         
     }
 }
-#Preview{
-    WelcomeView()
+#Preview {
+    NavigationStack {
+        WelcomeView()
+    }
 }
