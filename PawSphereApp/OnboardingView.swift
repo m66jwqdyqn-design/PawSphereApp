@@ -147,6 +147,7 @@ struct OnboardingView: View {
                         if page == 2 {
                             
                             Button {
+                                goToWelcome = true
                             } label: {
                                 HStack {
                                     Text("Get Started")
@@ -209,9 +210,7 @@ struct OnboardingView: View {
                 )
             }
         }
-        .navigationDestination(isPresented: $goToWelcome){
-            WelcomeView()
-        }
+    
     }
     }
 }
