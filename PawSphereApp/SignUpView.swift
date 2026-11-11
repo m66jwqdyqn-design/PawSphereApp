@@ -13,22 +13,31 @@ struct SignUpView: View {
     @Environment(\.modelContext) private var context
     @Query private var users: [User]
     
+    @State private var email: String = ""
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var passwordConfirmation: String = ""
-    
     @State private var message = ""
-
+    @State private var isRegistered = false
+    
     let green = Color(red: 0.10, green: 0.35, blue: 0.27)
 
     var body: some View {
 
-        VStack {
+        VStack(spacing: 20){
 
             Text("Sign Up")
                 .foregroundColor(green)
                 .font(.system(.largeTitle, design: .serif))
                 .bold()
+            TextField("Email", text: $email)
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(.gray)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .keyboardType(.emailAddress)
+                .textContentType(UITextContentType.emailAddress)
+                .padding()
             
             TextField("Username", text: $username)
                 .textFieldStyle(.roundedBorder)
@@ -47,23 +56,7 @@ struct SignUpView: View {
                 .foregroundColor(green)
                 .padding()
             Button {
-                if username.isEmpty || password.isEmpty || passwordConfirmation.isEmpty {
-                    message = "Please fill in all fields"
-                } else if password != passwordConfirmation {
-                    message = "Passwords do not match"
-                }else if users.contains(where: { $0.username == username }) {
-                    message = "Username already taken"
-                }else {
-                    let newUser = User(username: username, password: password)
-                    context.insert(newUser)
-                    do {
-                        try context.save()
-                        message = "Account created successfully"
-                    }catch {
-                        message = "Could not create account"
-                    }
-                    
-                }
+                register()
             } label: {
                 Text("Create Account")
                     .foregroundStyle(.white)
@@ -73,7 +66,9 @@ struct SignUpView: View {
                     .clipShape(Capsule())
             }
             Text(message)
-                .foregroundColor(green)
+                .foregroundColor(
+                    isRegistered && !message.isEmpty ? .green : .red
+                )
             HStack{
                 Text("Already have an account?")
                     .foregroundColor(.gray)
@@ -94,9 +89,45 @@ struct SignUpView: View {
             Color("backgroundColor")
                 .ignoresSafeArea()
         )
+        .navigationDestination(isPresented: $isRegistered) {
+            MainTabView()
+                .navigationBarBackButtonHidden(true)
+        }
     }
-}
+    func register() {
+        let cleanEmail = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let cleanUsername = username.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if cleanEmail.isEmpty || cleanUsername.isEmpty || password.isEmpty
+            || passwordConfirmation.isEmpty {
+            message = "Please fill in all fields"
+            
+        }else if !cleanEmail.contains("@") || !cleanEmail.contains(".") {
+            message = "Please enter a valid email"
+        }else if users.contains(where: {$0.username == cleanUsername}) {
+            message = "That username is already taken"
+        }
+        else{
+            let newUser = User(
+                email: cleanEmail,
+                username: cleanUsername,
+                password: password
+            )
+            context.insert(newUser)
+            do {
+                try context.save()
+                message = "User created successfully"
+                isRegistered = true
+            } catch {
+                message = "Failed to create user: \(error.localizedDescription)"
+            }
+            }
+        }
+    }
 
 #Preview {
-    SignUpView()
+    NavigationStack{
+        SignUpView()
+    }
+    .modelContainer(for: User.self, inMemory: true)
 }
