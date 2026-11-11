@@ -7,8 +7,11 @@
 
 
 import SwiftUI
+import SwiftData
 
 struct SignUpView: View {
+    @Environment(\.modelContext) private var context
+    @Query private var users: [User]
 
     let green = Color(red: 0.10, green: 0.35, blue: 0.27)
 

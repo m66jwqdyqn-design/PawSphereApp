@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		2549B461309B1CF60040E3D3 /* PawSphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawSphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2549B461309B1CF60040E3D3 /* PawSphereApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PawSphereApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		2521596A30819510003DFC17 /* Exceptions for "PawSphere" folder in "PawSphere" target */ = {
+		2521596A30819510003DFC17 /* Exceptions for "PawSphereApp" folder in "PawSphereApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 2578DC403081241900CD29B1 /* PawSphere */;
+			target = 2578DC403081241900CD29B1 /* PawSphereApp */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2578DC433081241900CD29B1 /* PawSphere */ = {
+		2578DC433081241900CD29B1 /* PawSphereApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				2521596A30819510003DFC17 /* Exceptions for "PawSphere" folder in "PawSphere" target */,
+				2521596A30819510003DFC17 /* Exceptions for "PawSphereApp" folder in "PawSphereApp" target */,
 			);
-			path = PawSphere;
+			path = PawSphereApp;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -45,17 +45,17 @@
 		2578DC383081241900CD29B1 = {
 			isa = PBXGroup;
 			children = (
-				2578DC433081241900CD29B1 /* PawSphere */,
-				2549B461309B1CF60040E3D3 /* PawSphere.app */,
+				2578DC433081241900CD29B1 /* PawSphereApp */,
+				2549B461309B1CF60040E3D3 /* PawSphereApp.app */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2578DC403081241900CD29B1 /* PawSphere */ = {
+		2578DC403081241900CD29B1 /* PawSphereApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2578DC4C3081241A00CD29B1 /* Build configuration list for PBXNativeTarget "PawSphere" */;
+			buildConfigurationList = 2578DC4C3081241A00CD29B1 /* Build configuration list for PBXNativeTarget "PawSphereApp" */;
 			buildPhases = (
 				2578DC3D3081241900CD29B1 /* Sources */,
 				2578DC3E3081241900CD29B1 /* Frameworks */,
@@ -66,13 +66,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				2578DC433081241900CD29B1 /* PawSphere */,
+				2578DC433081241900CD29B1 /* PawSphereApp */,
 			);
-			name = PawSphere;
+			name = PawSphereApp;
 			packageProductDependencies = (
 			);
 			productName = PawSphereApp;
-			productReference = 2549B461309B1CF60040E3D3 /* PawSphere.app */;
+			productReference = 2549B461309B1CF60040E3D3 /* PawSphereApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -90,7 +90,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2578DC3C3081241900CD29B1 /* Build configuration list for PBXProject "PawSphere" */;
+			buildConfigurationList = 2578DC3C3081241900CD29B1 /* Build configuration list for PBXProject "PawSphereApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -104,7 +104,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2578DC403081241900CD29B1 /* PawSphere */,
+				2578DC403081241900CD29B1 /* PawSphereApp */,
 			);
 		};
 /* End PBXProject section */
@@ -320,7 +320,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2578DC3C3081241900CD29B1 /* Build configuration list for PBXProject "PawSphere" */ = {
+		2578DC3C3081241900CD29B1 /* Build configuration list for PBXProject "PawSphereApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2578DC4A3081241A00CD29B1 /* Debug */,
@@ -329,7 +329,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2578DC4C3081241A00CD29B1 /* Build configuration list for PBXNativeTarget "PawSphere" */ = {
+		2578DC4C3081241A00CD29B1 /* Build configuration list for PBXNativeTarget "PawSphereApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2578DC4D3081241A00CD29B1 /* Debug */,

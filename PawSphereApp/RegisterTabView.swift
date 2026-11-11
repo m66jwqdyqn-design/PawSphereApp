@@ -16,16 +16,16 @@ struct RegisterTabView: View {
 
         VStack(spacing: 25){
             Picker("Acount", selection: $selectedTab){
-                Text("Login").tag(0)
-                Text("Sign Up").tag(1)
+                Text("Sign Up").tag(0)
+                Text("Login").tag(1)
             }
             .pickerStyle(.segmented)
             .padding(.horizontal, 20)
             
             if selectedTab == 0 {
-                LoginView()
-            } else {
                 SignUpView()
+            } else {
+                LoginView()
             }
             Spacer()
 

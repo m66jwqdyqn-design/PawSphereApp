@@ -46,7 +46,7 @@ struct WelcomeView: View {
                 .frame(height: 45)
            
             NavigationLink {
-                RegisterTabView(selectedTab: 1)
+                RegisterTabView(selectedTab: 0)
             } label: {
                 Text("Create an Account")
                     .foregroundColor(.white)
@@ -57,7 +57,7 @@ struct WelcomeView: View {
             }
 
             NavigationLink{
-               RegisterTabView(selectedTab: 0)
+               RegisterTabView(selectedTab: 1)
             }label: {
                 Text("Log In")
                     .foregroundColor(green)
