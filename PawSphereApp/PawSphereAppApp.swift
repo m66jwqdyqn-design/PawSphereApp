@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct PawSphereAppApp: App {
+struct PawSphereApp: App {
     var body: some Scene {
         WindowGroup {
             OnboardingView()
