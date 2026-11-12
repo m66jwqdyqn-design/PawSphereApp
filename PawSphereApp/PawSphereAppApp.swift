@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-
+import SwiftData
 @main
 struct PawSphereAppApp: App {
     var body: some Scene {
         WindowGroup {
             OnboardingView()
         }
+        .modelContainer(for: User.self)
     }
 }
